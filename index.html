@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="css/style.css" type="text/css" />
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-<script src="js/pouchdb-5.3.1.min.js"></script>
+<script src="http://cdn.jsdelivr.net/pouchdb/5.3.2/pouchdb.min.js"></script>
 <script src="js/script.js"></script>
 
 </head>
@@ -98,10 +98,10 @@
 			<textarea id="message" name="message"></textarea>
 			<div class="ui-grid-a">
 				<div class="ui-block-a">
-					<input type="submit" value="Submit"/>
+					<input id="submit-btn" type="submit" value="Submit"/>
 				</div>
 				<div class="ui-block-b">
-					<input type="reset" value="Reset"/>
+					<input id="reset-btn" type="reset" value="Reset"/>
 				</div>
 			</div>
 		</form>
