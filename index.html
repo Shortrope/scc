@@ -5,7 +5,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Form App</title>
-<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+
+<link rel="stylesheet" href="css/themes/scc2.min.css" />
+<link rel="stylesheet" href="css/themes/jquery.mobile.icons.min.css" />
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
+
+<!--<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />-->
 <link rel="stylesheet" href="css/style.css" type="text/css" />
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
@@ -16,7 +21,7 @@
 
 <body>
 
-<section id="home" data-role="page">
+<section id="home" data-role="page" data-theme="c">
 	<div data-role="header" data-position="fixed">
 		<h1>Coach Marilyn</h1>
 		<a class="ui-btn ui-icon-carat-l ui-btn-icon-notext ui-corner-all" href="#home">Back</a>
@@ -71,10 +76,10 @@
 		modo typi, qui nunc nobis videntur parum clari, fiant sollemnes
 		in futurum.</p>
 	</div>
-	<div data-role="footer" data-position="fixed">
+	<footer data-role="footer" data-position="fixed">
 		<h1>Contact Marilyn</h1>
-		<p>&copy; 2016 <a href="http://www.coachmarilyn.com" target="_blank">coachmarilyn.com</a></p>
-	</div>
+		<p><span class="copyright">&copy; 2014</span> <a href="http://www.coachmarilyn.com" target="_blank">coachmarilyn.com</a></p>
+	</footer>
 </section>
 
 <section id="contactform" data-role="page">
@@ -114,10 +119,10 @@
 			</div>
 		</form>
 	</div>
-	<div data-role="footer" data-position="fixed">
+	<footer data-role="footer" data-position="fixed">
 		<h1>Contact Marilyn</h1>
-		<p class="copyright">&copy; 2016 <a href="http://www.coachmarilyn.com" target="_blank">coachmarilyn.com</a></p>
-	</div>
+		<p><span class="copyright">&copy; 2014</span> <a href="http://www.coachmarilyn.com" target="_blank">coachmarilyn.com</a></p>
+	</footer>
 </section>
 
 

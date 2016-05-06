@@ -3,8 +3,11 @@
     top: 6px;
     right: 10px;
 }
-.copyright {
-    font-size: .8em;
+.ui-footer > .ui-title {
+    padding: .8em -0px .2em;
+}
+.ui-footer > p {
+    font-size: .7em;
     text-align: center;
     margin-top: 0;
 }

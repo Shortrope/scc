@@ -5,12 +5,13 @@ $(document).ready(function () {
   // Create a reference to the local PouchDB
   var db = new PouchDB('scc_mario');
 
+  // Log a message to the console to verify the db exists
   db.info().then(function (info) {
     log('db_name: ' + info.db_name);
     log('doc_count: ' + info.doc_count);
   });
   
-  // Get reference to all form elements
+  // Get a reference to each form element
   var $firstname = $('#firstname'),
       $lastname = $('#lastname'),
       $email = $('#email'),
@@ -21,7 +22,7 @@ $(document).ready(function () {
       $resetBtn = $('#reset-btn');
 
 
-  // Our submit event handler
+  // The submit event handler
   $submitBtn.on('click', function (evt) {
     evt.preventDefault();
     
@@ -54,6 +55,16 @@ $(document).ready(function () {
 
 
 
+  // Set Copyright year
+  var year = (new Date()).getFullYear();
+  log(year);
+  log($('.copyright'));
+  $('.copyright').each(function(i, elem){
+    log(elem);
+    elem.innerHTML = '&copy; ' + year;
+  })
+      
+  
 
 /////////////////////////////////////////////////////////////
 //  Helper Functions
