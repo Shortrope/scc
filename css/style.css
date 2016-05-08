@@ -11,3 +11,14 @@
     text-align: center;
     margin-top: 0;
 }
+
+.required-mark {
+    color: #d00;
+}
+
+.ui-input-text.ui-focus.valid {
+    box-shadow: 0 0 6px #088;
+}
+.ui-input-text.ui-focus.invalid {
+    box-shadow: 0 0 6px #904;
+}
