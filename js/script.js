@@ -48,19 +48,13 @@ $(document).ready(function () {
     $phone.val('');
     $subject.val('');
     $message.val('');
-    $submitBtn.val('');
-    $resetBtn.val('');
-
   });
 
 
 
   // Set Copyright year
   var year = (new Date()).getFullYear();
-  log(year);
-  log($('.copyright'));
   $('.copyright').each(function(i, elem){
-    log(elem);
     elem.innerHTML = '&copy; ' + year;
   })
       
