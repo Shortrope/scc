@@ -8,16 +8,21 @@
 
 # TODOs
 
-1. Save info locally
+- Save info locally
   - HTML5 Local Storage
   - PouchDB
-2. JavaScript Email
+- JavaScript Email
   - gmail API
   - EmailJS
-3. Logo in header
-4. Home btn vs Back btn
-5. Header/Menu: External .. DRY
+- Home btn vs Back btn
+- Header/Menu: External .. DRY
   - active/persist menu buttons
-6. Footer copyright shows current year
-7. Footer style
-8. Custom jQuery Mobile Theme
+
+## Done
+- Save form data Locally w PouchDB
+- Logo in header
+- Back button
+- menu grid
+- Footer copyright shows current year
+- Custom jQuery Mobile Theme
+- Footer style
