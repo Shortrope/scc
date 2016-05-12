@@ -16,9 +16,9 @@
     color: #d00;
 }
 
-.ui-input-text.ui-focus.valid {
+.ui-input-text.valid {
     box-shadow: 0 0 6px #088;
 }
-.ui-input-text.ui-focus.invalid {
+.ui-input-text.invalid {
     box-shadow: 0 0 6px #904;
 }

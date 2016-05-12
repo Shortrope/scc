@@ -35,6 +35,7 @@ $(document).ready(function () {
       }
     }); // end validate required fields
     addDataToLocalDB();
+    sendEmail();
     clearFormFields();
     return true;  // submit
   }); // on submit
@@ -55,7 +56,7 @@ $(document).ready(function () {
   function validateInput(jqElem) {
     var myPattern = jqElem.attr('pattern');
     var myPlaceholder = jqElem.attr('placeholder');
-    var isValid = jqElem.val().search(myPattern) >= 0;
+    var isValid = (jqElem.val().search(myPattern) >= 0) ? true : false;
     if (isValid) {
       jqElem.closest('div').removeClass('invalid');
       jqElem.closest('div').addClass('valid');
@@ -63,7 +64,7 @@ $(document).ready(function () {
       jqElem.closest('div').removeClass('valid');
       jqElem.closest('div').addClass('invalid');
     }
-    return isValid();
+    return isValid;
   }
   
   function addDataToLocalDB() {
@@ -76,10 +77,33 @@ $(document).ready(function () {
       "subject": $subject.val(),
       "message": $message.val()
     }
-    
     // Add the JSON data to the local PouchDB
     db.put(doc);
   }
+  
+ function sendEmail() {
+    var emailMessage = $firstname.val() +' '+ $lastname.val() +'\n';
+    emailMessage += $phone.val() +'\n' + $email.val() +'\n\n' + $message.val();
+    window.plugins.socialsharing.shareViaEmail(
+      emailMessage, 
+      $subject.val(),
+      ['skelman2@gmail.com'], // TO: must be null or an array
+      null, // CC: must be null or an array
+      null, // BCC: must be null or an array
+      null, // FILES: can be null, a string, or an array
+      onSuccess, // called when sharing worked, but also when the user cancelled sharing via email. On iOS, the callbacks' boolean result parameter is true when sharing worked, false if cancelled. On Android, this parameter is always true so it can't be used). See section "Notes about the successCallback" below.
+      onError // called when sh*t hits the fan
+   );
+ }
+ 
+ function onSuccess() {
+   log('email success');
+ }
+ function onError() {
+   log('email error');
+ }
+    
+ 
   
   function clearFormFields() {
     $firstname.val('');
