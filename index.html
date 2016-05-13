@@ -35,6 +35,9 @@
 	</div>
 	
 	<div class="ui-content">
+    <div class="home-page-logo">
+      <img src="images/logo.png" alt="" width="200" height="200">
+    </div>
 		<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
 		sed diam nonummy nibh euismod tincidunt ut laoreet dolore
 		magna aliquam erat volutpat. Ut wisi enim ad minim veniam,
@@ -82,7 +85,7 @@
 	</footer>
 </section>
 
-<section id="contactform" data-role="page">
+<section id="contactform" data-role="page" data-theme="c">
 	<div data-role="header" data-position="fixed">
 		<h1>Coach Marilyn</h1>
 		<a class="ui-btn ui-icon-carat-l ui-btn-icon-notext ui-corner-all" href="#home">Home</a>
@@ -95,30 +98,33 @@
 		</nav>
 	</div>
 	
-	<div class="ui-content">
+	<div class="ui-content form-containter">
 		<form id="contact_form" name="contact_form" method="get" action="#">
 			<label for="firstname">First Name: <span class="required-mark">*</span></label>
-			<input type="text" name="firstname" id="firstname" pattern="[a-zA-Z0-9]+" placeholder="first name" required>
+			<input type="text" name="firstname" id="firstname" pattern="[a-zA-Z0-9]+" required>
 			<label for="lastname">Last Name: <span class="required-mark">*</span></label>
-			<input type="text" name="lastname" id="lastname" pattern="[a-zA-Z0-9]+" placeholder="last name" required>
+			<input type="text" name="lastname" id="lastname" pattern="[a-zA-Z0-9]+" required>
 			<label for="email">Email: <span class="required-mark">*</span></label>
-			<input type="email" name="email" id="email" pattern="\w+@\w+\.\w+" placeholder="me@example.com" required>
+			<input type="email" name="email" id="email" pattern="\w+@\w+\.\w+" required>
 			<label for="phone">Phone:</label>
-			<input type="tel" name="phone" id="phone" placeholder="123-456-7890">
+			<input type="tel" name="phone" id="phone">
 			<!--<input type="tel" name="phone" id="phone" pattern="\d{3}[\-]\d{3}[\-]\d{4}" placeholder="123-456-7890">-->
 			<label for="subject">Subject:</label>
-			<input type="text" name="subject" id="subject" placeholder="subject">
+			<input type="text" name="subject" id="subject">
 			<label for="message">Message:</label>
 			<textarea id="message" name="message"></textarea>
 			<div class="ui-grid-a">
 				<div class="ui-block-a">
-					<input id="submit-btn" type="submit" value="Submit">
+					<input id="submit-btn" type="button" value="Submit">
 				</div>
 				<div class="ui-block-b">
 					<input id="reset-btn" type="reset" value="Reset">
 				</div>
 			</div>
 		</form>
+    <div id="thankyou">
+      <p>Thank You</p>
+    </div>
 	</div>
 	<footer data-role="footer" data-position="fixed">
 		<h1>Contact Marilyn</h1>

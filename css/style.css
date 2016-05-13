@@ -3,6 +3,9 @@
     top: 6px;
     right: 10px;
 }
+.home-page-logo {
+  text-align: center;
+}
 .ui-footer > .ui-title {
     padding: .8em -0px .2em;
 }
@@ -21,4 +24,21 @@
 }
 .ui-input-text.invalid {
     box-shadow: 0 0 6px #904;
+}
+
+.form-containter {
+  position: relative;
+}
+#thankyou {
+  display: none;
+  color: #fff;
+  font-size: 1.8em;
+  text-align: center;
+  padding: 20px;
+  width: 100%;
+  padding: 10px;
+  background: rgba(50, 50, 80, .84);
+  position: absolute;
+  top: 40%;
+  left: 0%;
 }

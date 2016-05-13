@@ -9,8 +9,8 @@ $(document).ready(function () {
       $subject = $('#subject'),
       $message = $('#message'),
       $submitBtn = $('#submit-btn'),
-      $resetBtn = $('#reset-btn');
-      
+      $resetBtn = $('#reset-btn'),
+      $thankYou = $('#thankyou');
   // Create a reference to the local PouchDB
   var db = new PouchDB('scc_mario');
 
@@ -28,20 +28,25 @@ $(document).ready(function () {
   
   // Submit event handler
   // Validate all fields before submit
-  $('#contact_form').submit(function () {
+  $submitBtn.on('click', function () {
+    var isSubmitable = true;
     $(':input[required]').each(function () {
       if ( !validateInput($(this)) ) {
-        return false; // if invalid field.. do not submit
+        isSubmitable = false;
+        $(this).focus();
+        return false; // Break out of .each() loop
       }
     }); // end validate required fields
-    addDataToLocalDB();
-    sendEmail();
-    clearFormFields();
-    return true;  // submit
+
+    if (isSubmitable) {
+      displayThankYou();
+      addDataToLocalDB();
+      sendEmail();
+      clearFormFields();
+    } 
   }); // on submit
-  
-  
-  
+
+  //
   // Set Copyright year
   var year = (new Date()).getFullYear();
   $('.copyright').each(function(i, elem){
@@ -55,7 +60,6 @@ $(document).ready(function () {
 
   function validateInput(jqElem) {
     var myPattern = jqElem.attr('pattern');
-    var myPlaceholder = jqElem.attr('placeholder');
     var isValid = (jqElem.val().search(myPattern) >= 0) ? true : false;
     if (isValid) {
       jqElem.closest('div').removeClass('invalid');
@@ -69,6 +73,15 @@ $(document).ready(function () {
   
   function addDataToLocalDB() {
     // Prepare the JSON doc
+    if ($phone.val() == '') {
+      $phone.val('No Phone');
+    }
+    if ($subject.val() == '') {
+      $subject.val('No Subject');
+    }
+    if ($message.val() == '') {
+      $message.val('No Message');
+    }
     var doc = {
       "_id": $email.val(),
       "firstname": $firstname.val(),
@@ -81,31 +94,35 @@ $(document).ready(function () {
     db.put(doc);
   }
   
- function sendEmail() {
+  function sendEmail() {
     var emailMessage = $firstname.val() +' '+ $lastname.val() +'\n';
-    emailMessage += $phone.val() +'\n' + $email.val() +'\n\n' + $message.val();
+    emailMessage += $phone.val() +'\n' + $email.val() +'\n\n';
+    emailMessage += $subject.val() + '\n' + $message.val();
     window.plugins.socialsharing.shareViaEmail(
       emailMessage, 
       $subject.val(),
-      ['skelman2@gmail.com'], // TO: must be null or an array
+      ['makaack@gmail.com'], // TO: must be null or an array
       null, // CC: must be null or an array
       null, // BCC: must be null or an array
       null, // FILES: can be null, a string, or an array
       onSuccess, // called when sharing worked, but also when the user cancelled sharing via email. On iOS, the callbacks' boolean result parameter is true when sharing worked, false if cancelled. On Android, this parameter is always true so it can't be used). See section "Notes about the successCallback" below.
       onError // called when sh*t hits the fan
    );
- }
- 
- function onSuccess() {
+  }
+
+  function displayThankYou() {
+   $thankYou.fadeIn('slow').delay(2000).fadeOut();
+  }
+
+  function onSuccess() {
    log('email success');
- }
- function onError() {
+  }
+  function onError() {
    log('email error');
- }
-    
- 
+  }
   
   function clearFormFields() {
+    log('In clearFormFields()');
     $firstname.val('');
     $lastname.val('');
     $email.val('');
@@ -118,4 +135,16 @@ $(document).ready(function () {
     window.console.log(msg);
   }
   
+  // for tshooting
+  function showVals(msg) {
+    log();
+    log(msg)
+    log('fname: ' + $firstname.val());
+    log('lname: ' + $lastname.val());
+    log('email: ' + $email.val());
+    log('phone: ' + $phone.val());
+    log('subject: ' + $subject.val());
+    log('message: ' + $message.val());
+    log();
+  }
 });
