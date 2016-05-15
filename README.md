@@ -7,7 +7,6 @@
 
 
 # TODOs
-Send Email
 
 ## Done
 - Save form data Locally w PouchDB
@@ -19,6 +18,7 @@ Send Email
 - Footer style
 - active/persist menu buttons
 - Fix validation when on actual device
+- Send Email
 
 ### Further Study
 - Save info locally
