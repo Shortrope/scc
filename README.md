@@ -8,6 +8,7 @@
 
 # TODOs
 - Verify local storage on device  
+- Sync w external CouchDB
 
 ## Done
 - Save form data Locally w PouchDB
