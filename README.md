@@ -7,6 +7,7 @@
 
 
 # TODOs
+- Verify local storage on device  
 
 ## Done
 - Save form data Locally w PouchDB
