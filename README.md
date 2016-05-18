@@ -1,9 +1,14 @@
-     ,-----.,--.                  ,--. ,---.   ,--.,------.  ,------.
-    '  .--./|  | ,---. ,--.,--. ,-|  || o   \  |  ||  .-.  \ |  .---'
-    |  |    |  || .-. ||  ||  |' .-. |`..'  |  |  ||  |  \  :|  `--, 
-    '  '--'\|  |' '-' ''  ''  '\ `-' | .'  /   |  ||  '--'  /|  `---.
-     `-----'`--' `---'  `----'  `---'  `--'    `--'`-------' `------'
-    ----------------------------------------------------------------- 
+# Instructions
+- Set the name of the local database in the variables section:
+    - var db = new PouchDb('db_name');  // currently scc_mario
+ -Set the local db name and url to an external CouchDB in the App section.  
+There are two lines containing:
+    - db.sync('scc_mario', 'https://external.couch.db')
+- Set the 'Email To' address in then function
+    sendEmail() {
+        ...
+        window.plugins.socialsharing.shareViaEmail()
+    }
 
 
 # TODOs

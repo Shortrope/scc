@@ -22,7 +22,7 @@ $(document).ready(function () {
     $thankYou = $('#thankyou'),
     // Create a reference to the local PouchDB
     db = new PouchDB('scc_mario');
-
+    
 
   // Log a message to the console to verify the db exists
   // db.info().then(function (info) {
@@ -90,7 +90,7 @@ $(document).ready(function () {
     window.plugins.socialsharing.shareViaEmail(
       emailMessage,
       $subject.val(),
-      ['mario@shortrope.com'], // TO: must be null or an array
+      ['your@email.com'], // TO: must be null or an array
       null, // CC: must be null or an array
       null, // BCC: must be null or an array
       null, // FILES: can be null, a string, or an array
@@ -130,6 +130,8 @@ $(document).ready(function () {
 /////////////////////////////////////////////////////////////
 // App
 
+  // db.sync('https://external.couch.db'); // sync with external CounchDB
+
   // Validate each field when they are filled in
   $('#contact_form :input[pattern]').blur(function () {
     validateInput($(this));
@@ -150,6 +152,7 @@ $(document).ready(function () {
     if (isSubmitable) {
       displayThankYou();
       addDataToLocalDB();
+      // db.sync('https://external.couch.db'); // sync with external CounchDB
       sendEmail();
       clearFormFields();
     }
