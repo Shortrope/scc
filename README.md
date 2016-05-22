@@ -13,6 +13,10 @@
 
 
 # TODOs
+- Send data to PHP via Ajax
+- Parse JSON data w PHP
+- Validate / Sanitize data server side
+- Create INSERT and SELECT queries
 - Verify local storage on device  
 - Sync w external CouchDB
 
@@ -27,6 +31,7 @@
 - active/persist menu buttons
 - Fix validation when on actual device
 - Send Email
+- Create MySQL Db
 
 ### Further Study
 - Save info locally
