@@ -1,5 +1,6 @@
-DROP TABLE IF EXISTS `scc_db`.`subscribers`;
-CREATE TABLE IF NOT EXISTS `scc_db`.`subscribers` (
+USE scc_db;
+DROP TABLE IF EXISTS subscribers;
+CREATE TABLE IF NOT EXISTS subscribers (
     id INT UNSIGNED NOT NULL AUTO_INCREMENT,
     firstname VARCHAR(30) NOT NULL,
     lastname VARCHAR(30) NOT NULL,
@@ -8,8 +9,8 @@ CREATE TABLE IF NOT EXISTS `scc_db`.`subscribers` (
     PRIMARY KEY (id)
 );
 
-DROP TABLE IF EXISTS `scc_db`.`messages`;
-CREATE TABLE IF NOT EXISTS `scc_db`.`messages` (
+DROP TABLE IF EXISTS messages;
+CREATE TABLE IF NOT EXISTS messages (
     id INT UNSIGNED NOT NULL AUTO_INCREMENT,
     subscriber_id INT UNSIGNED NOT NULL,
     date DATETIME NOT NULL,
