@@ -67,7 +67,8 @@ $(document).ready(function () {
       "lastname": $lastname.val(),
       "phone": $phone.val(),
       "subject": $subject.val(),
-      "message": $message.val()
+      "message": $message.val(),
+      "timestamp": new Date().toISOString()
     };
     // Add the JSON data to the local PouchDB
     db.put(doc);
@@ -94,7 +95,7 @@ $(document).ready(function () {
       null, // CC: must be null or an array
       null, // BCC: must be null or an array
       null, // FILES: can be null, a string, or an array
-      onSuccess, // called when sharing worked, but also when the user cancelled sharing via email. On iOS, the callbacks' boolean result parameter is true when sharing worked, false if cancelled. On Android, this parameter is always true so it can't be used). See section "Notes about the successCallback" below.
+      onSuccess, // called when sharing worked
       onError // called when sh*t hits the fan
     );
   }
@@ -132,7 +133,7 @@ $(document).ready(function () {
 
   // db.sync('https://external.couch.db'); // sync with external CounchDB
 
-  // Validate each field when they are filled in
+  // Validate each reqired field when they are filled in
   $('#contact_form :input[pattern]').blur(function () {
     validateInput($(this));
   });
