@@ -1,11 +1,13 @@
+/*global $, PouchDB*/
+
 // 1.  Variables
 // 2.  Functions
 // 3.  App
 
-
 // Wait for DOM creation before accessing elements 
 $(document).ready(function () {
   'use strict';
+    
     
 /////////////////////////////////////////////////////////////
 //  Variables
@@ -20,15 +22,19 @@ $(document).ready(function () {
     $submitBtn = $('#submit-btn'),
     $resetBtn = $('#reset-btn'),
     $thankYou = $('#thankyou'),
+    doc = {},
     // Create a reference to the local PouchDB
-    db = new PouchDB('scc_mario');
-    
+    db = new PouchDB('scc_mario'),
+    // Create a reference to the remote CouchDB
+    dbr = new PouchDB('http://ec2-54-210-91-252.compute-1.amazonaws.com:5984/scc_mario');
+
 
   // Log a message to the console to verify the db exists
   // db.info().then(function (info) {
   //   log('db_name: ' + info.db_name);
   //   log('doc_count: ' + info.doc_count);
   // });
+  
   
 /////////////////////////////////////////////////////////////
 //  Functions
@@ -50,7 +56,7 @@ $(document).ready(function () {
     return isValid;
   }
   
-  function addDataToLocalDB() {
+  function createJsonDoc() {
     // Prepare the JSON doc
     if ($phone.val() === '') {
       $phone.val('No Phone');
@@ -67,13 +73,12 @@ $(document).ready(function () {
       "lastname": $lastname.val(),
       "phone": $phone.val(),
       "subject": $subject.val(),
-      "message": $message.val(),
-      "timestamp": new Date().toISOString()
+      "message": $message.val()
     };
-    // Add the JSON data to the local PouchDB
-    db.put(doc);
+    
+    return doc;
+    
   }
-  
   
   function sendEmail() {
     var onSuccess = function (result) {
@@ -91,11 +96,11 @@ $(document).ready(function () {
     window.plugins.socialsharing.shareViaEmail(
       emailMessage,
       $subject.val(),
-      ['your@email.com'], // TO: must be null or an array
+      ['mario@shortrope.com'], // TO: must be null or an array
       null, // CC: must be null or an array
       null, // BCC: must be null or an array
       null, // FILES: can be null, a string, or an array
-      onSuccess, // called when sharing worked
+      onSuccess, // called when sharing worked, but also when the user cancelled sharing via email. On iOS, the callbacks' boolean result parameter is true when sharing worked, false if cancelled. On Android, this parameter is always true so it can't be used). See section "Notes about the successCallback" below.
       onError // called when sh*t hits the fan
     );
   }
@@ -131,9 +136,7 @@ $(document).ready(function () {
 /////////////////////////////////////////////////////////////
 // App
 
-  // db.sync('https://external.couch.db'); // sync with external CounchDB
-
-  // Validate each reqired field when they are filled in
+  // Validate each field when they are filled in
   $('#contact_form :input[pattern]').blur(function () {
     validateInput($(this));
   });
@@ -152,8 +155,11 @@ $(document).ready(function () {
 
     if (isSubmitable) {
       displayThankYou();
-      addDataToLocalDB();
-      // db.sync('https://external.couch.db'); // sync with external CounchDB
+      doc = createJsonDoc();
+      // Add the JSON data to the local PouchDB
+      db.put(doc);
+      // Add the JSON data to the remote CouchDB
+      dbr.put(doc);
       sendEmail();
       clearFormFields();
     }
