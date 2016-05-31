@@ -17,7 +17,6 @@
 - Parse JSON data w PHP
 - Validate / Sanitize data server side
 - Create INSERT and SELECT queries
-- Verify local storage on device  
 - Sync w external CouchDB
 
 ## Done
