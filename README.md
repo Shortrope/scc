@@ -1,3 +1,15 @@
+# Cordova Taco Instructions
+- Open cli and navigate to the parent directory where you want this project
+- Run: cordova create scc com.coachmarilyn.scc scc
+- Run: cordova platform add android
+- cd to ./scc directory  // this directory was just created
+- delete the files in 'www'
+- copy the project files from c9 or github to the 'www' directory
+    - html, css and js files
+- conect your device to the PC
+- Run: cordova run --list   // to verify connected device and get its id
+- Run: cordova run android --device --target=83746201245708
+
 # Instructions
 - Set the name of the local database in the variables section:
     - var db = new PouchDb('db_name');  // currently scc_mario  
