@@ -25,11 +25,8 @@
 
 
 # TODOs
-- Send data to PHP via Ajax
-- Parse JSON data w PHP
 - Validate / Sanitize data server side
 - Create INSERT and SELECT queries
-- Sync w external CouchDB
 
 ## Done
 - Save form data Locally w PouchDB
@@ -43,6 +40,9 @@
 - Fix validation when on actual device
 - Send Email
 - Create MySQL Db
+- Send data to PHP via Ajax
+- Parse JSON data w PHP
+- Sync w external CouchDB
 
 ### Further Study
 - Save info locally
