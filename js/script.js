@@ -24,9 +24,9 @@ $(document).ready(function () {
     $thankYou = $('#thankyou'),
     doc = {},
     // Create a reference to the local PouchDB
-    db = new PouchDB('scc_mario'),
+    db = new PouchDB('scc_mario');
     // Create a reference to the remote CouchDB
-    dbr = new PouchDB('http://ec2-54-210-91-252.compute-1.amazonaws.com:5984/scc_mario');
+    // dbr = new PouchDB('http://ec2-54-210-91-252.compute-1.amazonaws.com:5984/scc_mario');
 
 
   // Log a message to the console to verify the db exists
@@ -80,6 +80,19 @@ $(document).ready(function () {
     
   }
   
+  function sendToMySQL(doc) {
+    log("in sendToMySQL()");
+    log(doc);
+    // $.post('http://test.mastery2000.com/cim/prj/app1/app1_contact_srv.php', doc, function(data) {
+    $.post('http://apps.marilynmcleod.com/process.php', doc, function(data) {
+      log(data);      
+      // data = JSON.parse(data);
+      // log(data)
+      displayFeedback(data);
+    });
+  }
+  
+  
   function sendEmail() {
     var onSuccess = function (result) {
       log('email success: ' + result.completed);
@@ -104,9 +117,15 @@ $(document).ready(function () {
       onError // called when sh*t hits the fan
     );
   }
+  
 
   function displayThankYou() {
     $thankYou.fadeIn('slow').delay(10000).fadeOut();
+  }
+  
+  function displayFeedback(feedback) {
+    window.alert('Got Feedback: \n' + feedback)
+    
   }
 
   function clearFormFields() {
@@ -159,7 +178,8 @@ $(document).ready(function () {
       // Add the JSON data to the local PouchDB
       db.put(doc);
       // Add the JSON data to the remote CouchDB
-      dbr.put(doc);
+      //dbr.put(doc);
+      sendToMySQL(doc);
       sendEmail();
       clearFormFields();
     }
