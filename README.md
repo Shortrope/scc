@@ -14,9 +14,6 @@
 - Set the name of the local database in the variables section:
     - var db = new PouchDb('db_name');  // currently scc_mario  
     
-- Set db.sync() db's: local db name and url to external CouchDB 
-    - in the App section there are two lines containing:
-        - db.sync('scc_mario', 'https://external.couch.db')
 - Set the 'Email To' address in the Functions section:  
     sendEmail() {
         ...
